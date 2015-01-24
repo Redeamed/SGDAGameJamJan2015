@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CamTrigger : MonoBehaviour {
     CameraManagement cameraManage;
+    public Camera[] cams;
 	// Use this for initialization
 	void Start () 
     {
@@ -14,7 +15,7 @@ public class CamTrigger : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            cameraManage.SendMessage("TriggerCrossed", this.gameObject);
+            cameraManage.SendMessage("TriggerCrossed", cams);
         }
     }
 }
