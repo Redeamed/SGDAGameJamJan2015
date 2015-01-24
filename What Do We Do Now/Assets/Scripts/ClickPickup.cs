@@ -10,7 +10,7 @@ public class ClickPickup : MonoBehaviour {
 	void Start () {
         playerAI = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAI>();
         cameraManage = GameObject.FindGameObjectWithTag("CameraManagement").GetComponent<CameraManagement>();
-        pickUp = LayerMask.GetMask("PickUp");
+        pickUp = LayerMask.GetMask("Pickup");
 	}
 	
 	// Update is called once per frame
@@ -21,7 +21,8 @@ public class ClickPickup : MonoBehaviour {
             currCamera = cameraManage.getCurrCamera();
             RaycastHit hit;
             Ray camRay = currCamera.ScreenPointToRay (Input.mousePosition);
-            if (Physics.Raycast(camRay, out hit, 100, pickUp))
+           
+            if (Physics.Raycast(camRay, out hit, Mathf.Infinity,pickUp))
             {
                 Debug.Log("Item Hit");
                 if (playerAI.addItem(hit.collider.gameObject))
@@ -33,7 +34,7 @@ public class ClickPickup : MonoBehaviour {
                     Debug.Log("Failed to add item");
                 }
             }
-            Debug.DrawRay(camRay.origin, camRay.direction *100, Color.green);
+            Debug.DrawRay(camRay.origin, camRay.direction * 100.0f, Color.green);
         }
 	}
 

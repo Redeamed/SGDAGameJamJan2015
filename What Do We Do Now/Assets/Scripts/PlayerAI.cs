@@ -23,7 +23,8 @@ public class PlayerAI : MonoBehaviour {
             {
                 items[i] = item;
                 success = true;
-                Debug.Log("Item added: " + item.name); 
+                Debug.Log("Item added: " + item.name);
+                break;
             }
         }
         return success;
