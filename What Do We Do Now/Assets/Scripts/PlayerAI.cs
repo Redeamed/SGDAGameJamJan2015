@@ -19,12 +19,17 @@ public class PlayerAI : MonoBehaviour {
         bool success = false;
         for(int i = 0; i  < 9; ++i )
         {
-            if(items[i] == null)
+            if (items[i] == null)
             {
                 items[i] = item;
                 success = true;
                 Debug.Log("Item added: " + item.name);
                 break;
+            }
+            else if(i == 8)
+            {
+
+                Debug.Log("Failed to add item");
             }
         }
         return success;

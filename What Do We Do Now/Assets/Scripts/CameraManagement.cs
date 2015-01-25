@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class CameraManagement : MonoBehaviour {
+    
+
     public Camera[] cameras;
     public Camera currCamera;
 	// Use this for initialization
