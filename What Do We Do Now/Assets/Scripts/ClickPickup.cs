@@ -4,11 +4,13 @@ using System.Collections;
 public class ClickPickup : MonoBehaviour {
     GameObject player;
     PlayerAI playerAI;
+
     CameraManagement cameraManage;
     Camera currCamera;
     LayerMask pickUp;
+    
     LayerMask NPCMask;
-
+    GameObject npc;
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -16,6 +18,7 @@ public class ClickPickup : MonoBehaviour {
         cameraManage = GameObject.FindGameObjectWithTag("CameraManagement").GetComponent<CameraManagement>();
         pickUp = LayerMask.GetMask("Pickup");
         NPCMask = LayerMask.GetMask("NPC");
+        
 	}
 	
 	// Update is called once per frame
@@ -42,7 +45,8 @@ public class ClickPickup : MonoBehaviour {
             else if (Physics.Raycast(camRay, out hit, Mathf.Infinity, NPCMask))
             {
 
-
+                npc = hit.transform.gameObject;
+                NPCManager.singleton.activeNPC = npc;
                 Debug.Log(hit.transform.name);
 
             }
