@@ -6,12 +6,13 @@ public class Movement : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-	
+		//Debug.DrawRay(transform.position, transform.forward * 100.0f, Color.blue);
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
+		Debug.DrawRay(transform.position, transform.forward * 1.0f, Color.blue);
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += transform.forward * speed * Time.deltaTime;

@@ -30,10 +30,10 @@ public class ClickNPC: MonoBehaviour {
                 
                     NPCScript npcScript = hit.transform.GetComponent<NPCScript>();
                     NPCManager.singletonNPC.setActiveNPC(npcScript);
-                    Debug.Log(npcScript.getCurrentState().getDisplay());
+                   // Debug.Log(npcScript.getCurrentState().getDisplay());
                 
             }
-            Debug.DrawRay(camRay.origin, camRay.direction * 100.0f, Color.green);
+            //Debug.DrawRay(camRay.origin, camRay.direction * 100.0f, Color.green);
         }
 	}
 

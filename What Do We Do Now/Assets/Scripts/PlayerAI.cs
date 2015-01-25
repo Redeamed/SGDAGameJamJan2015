@@ -12,11 +12,11 @@ public class PlayerAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-	
+
 	}
     public bool addItem(GameObject item)
     {
-        bool success = false;
+		bool success = false;
         for(int i = 0; i  < 9; ++i )
         {
             if (items[i] == null)

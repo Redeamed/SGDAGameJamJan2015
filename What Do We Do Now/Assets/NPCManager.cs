@@ -17,6 +17,7 @@ public class NPCManager : MonoBehaviour {
         {
             Debug.Log("Can not create dupicate NPCManager");
         }
+
         for (int i = 0; i < 5; ++i)
         {
             NPC1.Add(new TextState());
