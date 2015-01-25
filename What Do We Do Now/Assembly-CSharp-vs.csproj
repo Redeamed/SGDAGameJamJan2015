@@ -46,13 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\NPCManager.cs" />
-     <Compile Include="Assets\NPCScript.cs" />
      <Compile Include="Assets\Scripts\CamTrigger.cs" />
      <Compile Include="Assets\Scripts\CameraManagement.cs" />
      <Compile Include="Assets\Scripts\ClickNPC.cs" />
      <Compile Include="Assets\Scripts\ClickPickup.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
+     <Compile Include="Assets\Scripts\NPCManager.cs" />
+     <Compile Include="Assets\Scripts\NPCScript.cs" />
      <Compile Include="Assets\Scripts\PlayerAI.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
