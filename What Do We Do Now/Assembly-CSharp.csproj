@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Campfire Pack\Script\SwitchView.cs" />
      <Compile Include="Assets\Scripts\CamTrigger.cs" />
      <Compile Include="Assets\Scripts\CameraManagement.cs" />
      <Compile Include="Assets\Scripts\ClickNPC.cs" />
@@ -54,6 +55,11 @@
      <Compile Include="Assets\Scripts\NPCManager.cs" />
      <Compile Include="Assets\Scripts\NPCScript.cs" />
      <Compile Include="Assets\Scripts\PlayerAI.cs" />
+     <Compile Include="Assets\TinyWarrior\Parallax\Scripts\Button.cs" />
+     <Compile Include="Assets\TinyWarrior\Parallax\Scripts\Player.cs" />
+     <Compile Include="Assets\TinyWarrior\Parallax\Scripts\Scroll.cs" />
+     <None Include="Assets\TinyWarrior\Parallax\ReadMe.txt" />
+     <None Include="Assets\TinyWarrior\Documents\Readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
