@@ -51,9 +51,8 @@
      <Compile Include="Assets\Scripts\ClickNPC.cs" />
      <Compile Include="Assets\Scripts\ClickPickup.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
-     <Compile Include="Assets\Scripts\NPCManager.cs" />
-     <Compile Include="Assets\Scripts\NPCScript.cs" />
      <Compile Include="Assets\Scripts\PlayerAI.cs" />
+     <Compile Include="Assets\exit.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>

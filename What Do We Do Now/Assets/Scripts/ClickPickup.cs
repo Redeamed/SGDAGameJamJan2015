@@ -7,12 +7,15 @@ public class ClickPickup : MonoBehaviour {
     CameraManagement cameraManage;
     Camera currCamera;
     LayerMask pickUp;
+    LayerMask NPCMask;
+
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
         playerAI = player.GetComponent<PlayerAI>();
         cameraManage = GameObject.FindGameObjectWithTag("CameraManagement").GetComponent<CameraManagement>();
         pickUp = LayerMask.GetMask("Pickup");
+        NPCMask = LayerMask.GetMask("NPC");
 	}
 	
 	// Update is called once per frame
@@ -23,14 +26,25 @@ public class ClickPickup : MonoBehaviour {
             currCamera = cameraManage.getCurrCamera();
             RaycastHit hit;
             Ray camRay = currCamera.ScreenPointToRay (Input.mousePosition);
-           
-            if (Physics.Raycast(camRay, out hit, Mathf.Infinity,pickUp))
+
+            if (Physics.Raycast(camRay, out hit, Mathf.Infinity, pickUp))
             {
+
                 Debug.Log("test");
                 if (playerAI.addItem(hit.collider.gameObject))
                 {
                     hit.collider.gameObject.SetActive(false);
                 }
+
+                Debug.Log(hit.transform.name);
+
+            }
+            else if (Physics.Raycast(camRay, out hit, Mathf.Infinity, NPCMask))
+            {
+
+
+                Debug.Log(hit.transform.name);
+
             }
             Debug.DrawRay(camRay.origin, camRay.direction * 100.0f, Color.green);
         }

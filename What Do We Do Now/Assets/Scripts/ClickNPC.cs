@@ -25,12 +25,10 @@ public class ClickNPC: MonoBehaviour {
             RaycastHit hit;
             Ray camRay = currCamera.ScreenPointToRay (Input.mousePosition);
            
-            if (Physics.Raycast(camRay, out hit, Mathf.Infinity,NPCMask))
+            if (Physics.Raycast(camRay, out hit, Mathf.Infinity))
             {
+
                 
-                    NPCScript npcScript = hit.transform.GetComponent<NPCScript>();
-                    NPCManager.singletonNPC.setActiveNPC(npcScript);
-                    Debug.Log(npcScript.getCurrentState().getDisplay());
                 
             }
             Debug.DrawRay(camRay.origin, camRay.direction * 100.0f, Color.green);
