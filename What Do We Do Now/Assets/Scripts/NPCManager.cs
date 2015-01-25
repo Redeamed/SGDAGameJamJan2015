@@ -1,154 +1,73 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-public class NPCManager : MonoBehaviour {
-    public GameObject[] allNPC;
-    public static NPCManager singletonNPC;
-    public List<TextState> NPC1;
 
-    NPCScript activeNPC;
+public class NPCManager : MonoBehaviour
+{
+    static public NPCManager singleton;
+    public GameObject NPC01;
+
+    public GameObject activeNPC;
+    NPCAI activeAI;
+    int state = 0;
+    int internalState = 0;
+
+    // Use this for initialization
     void Start()
     {
-        if (singletonNPC == null)
+        if (singleton == null)
         {
-            singletonNPC = this;
+            singleton = this;
         }
-        else 
+        else
         {
-            Debug.Log("Can not create dupicate NPCManager");
+            Debug.Log("Can not create duplicate NPCManager");
         }
-        for (int i = 0; i < 5; ++i)
-        {
-            NPC1.Add(new TextState());
-            NPC1[i].initial();
-        }
-
-        NPC1[0].setDisplayText("Hello World! What do we do now?");
-
-        NPC1[1].setDisplayText("ZzzzZzzzzZzzzzZzzzz");
-        NPC1[2].setDisplayText("**Sobs uncontrolably**");
-        NPC1[3].setDisplayText("Work work work.");
-        NPC1[4].setDisplayText("arrrrrggggggggg");
-        NPC1[0].addTargetState(NPC1[1], "Sleep");
-        NPC1[0].addTargetState(NPC1[2], "Cry");
-        NPC1[0].addTargetState(NPC1[3], "Work");
-        NPC1[0].addTargetState(NPC1[4], "Die");
-
-
-        allNPC[0].GetComponent<NPCScript>().setAllStates(NPC1);
-        
+        //initialize the states for the first NPC
+        NPC01Init();
     }
 
+    // Update is called once per frame
     void Update()
     {
         if (activeNPC != null)
         {
-            //Debug.Log(activeNPC.getCurrentState().getDisplay());
+            if (activeAI == null)
+            {
+                activeAI = activeNPC.GetComponent<NPCAI>();
+            }
+            Debug.Log(activeAI.getDisplay(state));
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                if (activeNPC.getCurrentState().getTargetState(0) != null)
-                {
-
-                    Debug.Log(activeNPC.getCurrentState().getDisplay());
-                    activeNPC.setCurrentState(activeNPC.getCurrentState().getTargetState(0));
-                    Debug.Log(activeNPC.getCurrentState().getDisplay());
-                }
-                else 
-                {
-                    Debug.Log("No path exists");
-                }
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                if (activeNPC.getCurrentState().getTargetState(1) != null)
-                {
-                    activeNPC.setCurrentState(activeNPC.getCurrentState().getTargetState(1));
-                }
-                else
-                {
-                    Debug.Log("No path exists");
-                }
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                if (activeNPC.getCurrentState().getTargetState(2) != null)
-                {
-                    activeNPC.setCurrentState(activeNPC.getCurrentState().getTargetState(2));
-                }
-                else
-                {
-                    Debug.Log("No path exists");
-                }
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                if (activeNPC.getCurrentState().getTargetState(3) != null)
-                {
-                    activeNPC.setCurrentState(activeNPC.getCurrentState().getTargetState(3));
-                }
-                else
-                {
-                    Debug.Log("No path exists");
-                }
+                state += 1;
             }
         }
     }
-    public void setActiveNPC(NPCScript aNPC)
+    void resetActiveNPC()
     {
-        activeNPC = aNPC;
+        activeNPC = null;
+        activeAI = null;
+        state = 0;
     }
-    public NPCScript getActiveNPC()
+    void NPC01Init()
     {
-        return activeNPC;
-    }
-}
+        NPCAI ai = NPC01.GetComponent<NPCAI>();
+        ai.addNPCState(); //add empty state 0
+        ai.setNPCState(0, 0, "This is the forst state.", null, .5f);
+        ai.setNPCState(0, 1, "This is the first target state.", null, .5f);
+        ai.setNPCState(0, 2, "This is the Second target state.", null, .5f);
+        ai.setNPCState(0, 3, "This is the third target state.", null, .5f);
+        ai.setNPCState(0, 4, "This is the fourth target state.", null, .5f);
+
+        ai.addNPCState(); //add empty state 1
+        ai.setNPCState(1, 0, "his is the first target state.", null, .5f);
+        ai.setNPCState(1, 1, "This is the first target state.", null, .5f);
+        ai.setNPCState(1, 2, "This is the Second target state.", null, .5f);
+        ai.setNPCState(1, 3, "This is the third target state.", null, .5f);
+        ai.setNPCState(1, 4, "This is the fourth target state.", null, .5f);
 
 
-public class TextState : MonoBehaviour 
-{
-    string displayText;
-    TextState[] targetState;
-    string[] targetText;
 
-    public void initial()
-    {
-        displayText = "Text Needed";
-        targetText = new string[4];
-        targetState = new TextState[4];
-        for (int i = 0; i < 4; i++)
-        {
-            targetText[i] = null;
-            targetState[i] = null;
-        }
-    }
-    public void setDisplayText(string dT)
-    {
-        displayText = dT;
-    }
-    public void addTargetState(TextState state, string stateText)
-    {
-        for (int i = 0; i < 4; ++i)
-        {
-            if (targetState[i] == null)
-            {
-                targetState[i] = state;
-                targetText[i] = stateText;
-                //Debug.Log(targetState[i].getDisplay());
-                break;
-            }
-            else if (i == 3)
-            {
-                Debug.Log("Can not add more targetStates to TextState");
-            }
-            
-        }
-    }
-    public TextState getTargetState(int i)
-    {
-        return targetState[i];
-    }
-    public string getDisplay()
-    {
-        return displayText;
+
+
     }
 }
