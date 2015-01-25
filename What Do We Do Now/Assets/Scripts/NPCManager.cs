@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NPCManager : MonoBehaviour {
+public class NPCManager : MonoBehaviour
+{
     static public NPCManager singleton;
     public GameObject NPC01;
 
     public GameObject activeNPC;
     NPCAI activeAI;
     int state = 0;
-	// Use this for initialization
-	void Start () 
+    int internalState = 0;
+
+    // Use this for initialization
+    void Start()
     {
         if (singleton == null)
         {
@@ -21,25 +24,24 @@ public class NPCManager : MonoBehaviour {
         }
         //initialize the states for the first NPC
         NPC01Init();
-	}
-	
-	// Update is called once per frame
-	void Update () 
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         if (activeNPC != null)
         {
-            if(activeAI == null)
+            if (activeAI == null)
             {
                 activeAI = activeNPC.GetComponent<NPCAI>();
             }
             Debug.Log(activeAI.getDisplay(state));
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                //state += 1;
-
+                state += 1;
             }
         }
-	}
+    }
     void resetActiveNPC()
     {
         activeNPC = null;
