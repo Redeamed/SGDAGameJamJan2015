@@ -35,7 +35,8 @@ public class NPCManager : MonoBehaviour {
             Debug.Log(activeAI.getDisplay(state));
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                state += 1;
+                //state += 1;
+
             }
         }
 	}
@@ -56,7 +57,7 @@ public class NPCManager : MonoBehaviour {
         ai.setNPCState(0, 4, "This is the fourth target state.", null, .5f);
 
         ai.addNPCState(); //add empty state 1
-        ai.setNPCState(1, 0, "This is the forst state.", null, .5f);
+        ai.setNPCState(1, 0, "his is the first target state.", null, .5f);
         ai.setNPCState(1, 1, "This is the first target state.", null, .5f);
         ai.setNPCState(1, 2, "This is the Second target state.", null, .5f);
         ai.setNPCState(1, 3, "This is the third target state.", null, .5f);

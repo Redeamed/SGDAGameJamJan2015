@@ -5,6 +5,7 @@ public class NPCAI : MonoBehaviour
 {
 
     List<NPCState> npcState;
+    int[][] stateVal;
     void Start()
     {
         npcState = new List<NPCState>();

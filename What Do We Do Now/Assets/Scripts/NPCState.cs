@@ -11,8 +11,6 @@ public class NPCState : MonoBehaviour {
         for (int i = 0; i < 5; ++i)
         {
             allStates[i] = new TextState();
-            allStates[i].setDisplay("sdagadg");
-            Debug.Log(i);
         }
 
     }
